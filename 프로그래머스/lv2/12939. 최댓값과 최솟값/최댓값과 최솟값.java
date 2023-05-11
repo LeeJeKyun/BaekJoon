@@ -1,26 +1,18 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.Arrays;
 
 class Solution {
     public String solution(String str) {
+    
+        String[] strArr = str.split(" ");
+        int[] iArr = new int[strArr.length ];
         
-        List<Integer> list = new ArrayList<>();
-        
-        StringTokenizer st = new StringTokenizer(str);
-        Iterator iter = st.asIterator();
-        
-        int nCount = 0;
-        while(iter.hasNext()){
-            nCount++;
-            list.add( Integer.parseInt( (String)iter.next() ) );
+        for(int i=0; i<strArr.length; i++) {
+        	iArr[i] = Integer.parseInt(strArr[i]);
         }
         
-        Collections.sort(list);
+        Arrays.sort(iArr);
         
-        String answer = list.get(0) + " " + list.get(nCount-1);
-        return answer;
+        return iArr[0] + " " + iArr[iArr.length-1];
+        
     }
 }
