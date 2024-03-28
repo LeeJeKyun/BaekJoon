@@ -1,13 +1,11 @@
+import java.util.*;
+import java.util.stream.*;
+
 class Solution {
     public int solution(int a, int b, int c) {
-        int answer = 0;
-        if(a==b && b==c) {
-            answer = (int)((a+b+c)*(Math.pow(a,2)+Math.pow(b,2)+Math.pow(c,2))*(Math.pow(a,3)+Math.pow(b,3)+Math.pow(c,3)));
-        } else if(a!=b && b!=c && c!=a) {
-            answer = a + b + c;
-        } else {
-            answer = (int)((a+b+c)*(Math.pow(a,2)+Math.pow(b,2)+Math.pow(c,2)));
-        }
-        return answer;
+        Set<Integer> numbers = Stream.of(a, b, c).collect(Collectors.toSet());
+        return (a + b + c)*
+                (numbers.size() < 3 ?(a*a+b*b+c*c) : 1 )*
+                (numbers.size() < 2 ? (a*a*a+b*b*b+c*c*c) : 1);
     }
 }
