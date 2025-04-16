@@ -1,23 +1,22 @@
+import java.util.*;
+
 class Solution {
     boolean solution(String s) {
-        boolean answer = true;
-        int factor = 0;
+        Stack<Character> stack = new Stack<>();
+        char[] charArray = s.toCharArray();
 
-        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-        System.out.println("Hello Java");
-        char[] charArr = s.toCharArray();
-        if(charArr[0]==')') return false;
-        else {
-            for(char c:charArr){
-                if(factor < 0) return false;
-                if(c=='(') {
-                    factor++;
-                } else if(c==')') {
-                    factor--;
+        for(char c : charArray) {
+            if(c == '(') {
+                stack.push('c');
+            } else {
+                if(stack.isEmpty()) {
+                    return false;
+                } else {
+                    stack.pop();
                 }
             }
         }
 
-        return factor == 0 ? true : false;
+        return stack.isEmpty();
     }
 }
